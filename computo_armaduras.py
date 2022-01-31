@@ -1,4 +1,4 @@
-# Entities selection
+#python -m pip install pywin32
 
 from dataclasses import replace
 import win32com.client
@@ -62,6 +62,7 @@ def reconoce_previo(texto):
     fi0= texto.find('Ø')
     if fi0!=-1:
         texto=texto.replace("Ø","%%c")
+        print(texto)
     
     zipe= texto.find('Pos')
     if zipe!=-1:
@@ -378,9 +379,9 @@ def crea_atributos():
     # Block de VHO
 
 def main():
-    crea_atributos()
-    #computa_texto() #Busca textos y computa cada texto de acuerdo al formato de texto
-    #halla_valores() #imprime el computo de las varillas para tipo de armaduras
+    # crea_atributos()
+    # computa_texto() #Busca textos y computa cada texto de acuerdo al formato de texto
+    halla_valores() #imprime el computo de las varillas para tipo de armaduras
        
     
 main()
