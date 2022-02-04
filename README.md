@@ -2,7 +2,9 @@
 Proyectos para automatizacion de cad en Python
 requiere pywin32
 python -m pip install pywin32
-
+*****************************************************************************************************
+computo_armaduras.py
+*****************************************************************************************************
 Este programa crea bloques con atributos para computar varillas
 se crean bloques llamados:
 
@@ -37,4 +39,7 @@ El programa reconoce los textos en formato:
 Computa las armaduras e inserta un bloque cpn atributos para los diferentes tipos de armaduras.
 Finalmente puede computar la suma de todas la armaduras sumando cada tipo de bloque, leyendo los atributos de cada uno
 
-
+*****************************************************************************************************
+AddExtrudedSolid
+*****************************************************************************************************
+Ejemplo  como añadir una region y crear un sólido a partir de esa region
