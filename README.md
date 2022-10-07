@@ -40,6 +40,12 @@ Computa las armaduras e inserta un bloque cpn atributos para los diferentes tipo
 Finalmente puede computar la suma de todas la armaduras sumando cada tipo de bloque, leyendo los atributos de cada uno
 
 *****************************************************************************************************
-AddExtrudedSolid
+AddExtrudedSolid.py
 *****************************************************************************************************
 Ejemplo  como añadir una region y crear un sólido a partir de esa region
+
+
+*****************************************************************************************************
+Dodecaedro.py
+*****************************************************************************************************
+Dibuja un dodecaedros a partir de una esfera al que se le hacen cortes con planos que forman el polyedro
