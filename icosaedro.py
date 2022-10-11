@@ -75,10 +75,10 @@ def Add_icosaedro():
     angulo_msup = [270,342,54,126,198]  # Esta alineado con angulo_superior
     angulo_minf = [306,18,90,162,234]   # Esta alineado con angulo_inferior pero se suma 72º para los indices 234+72=306 
 
-    angulo_zeta1 = 90  #angulo superior que forma el circulo inscripto en el poliedro
-    angulo_zeta2 = 270 #angulo inferior que forma el circulo inscripto en el poliedro
-    angulo_zeta3 = 90-63.43494882  #angulo que forma el circulo inscripto en vertices del poliedro en los puntos medios superiores
-    angulo_zeta4 = angulo_zeta3*-1 #angulo que forma el circulo inscripto en vertices del poliedro en los puntos medios inferiores
+    angulo_zeta1 = 90  #angulo punto superior 
+    angulo_zeta2 = 270 #angulo punto inferior 
+    angulo_zeta3 = 26.56505118 #angulo que forma el circulo inscripto en vertices del poliedro en los puntos medios superiores
+    angulo_zeta4 = -26.56505118 #angulo que forma el circulo inscripto en vertices del poliedro en los puntos medios inferiores
     
     # Puntos superiores del pentagono
     xs=punto_x(angulo_sup,angulo_zeta1,r)
@@ -87,11 +87,7 @@ def Add_icosaedro():
 
     #convertir a puntos de 3 coordenadas para Usar en Autocad
     Pslice_s1=POINT(xs[0],ys[0],zs[0]) 
-    Pslice_s2=POINT(xs[1],ys[1],zs[1])
-    Pslice_s3=POINT(xs[2],ys[2],zs[2])
-    Pslice_s4=POINT(xs[3],ys[3],zs[3])
-    Pslice_s5=POINT(xs[4],ys[4],zs[4])
-
+    
     # Puntos inferiores del pentagono
     xi=punto_x(angulo_inf,angulo_zeta2,r)
     yi=punto_y(angulo_inf,angulo_zeta2,r)
@@ -99,10 +95,6 @@ def Add_icosaedro():
 
     #convertir a puntos de 3 coordenadas para Usar en Autocad
     Pslice_i1=POINT(xi[0],yi[0],zi[0])
-    Pslice_i2=POINT(xi[1],yi[1],zi[1])
-    Pslice_i3=POINT(xi[2],yi[2],zi[2])
-    Pslice_i4=POINT(xi[3],yi[3],zi[3])
-    Pslice_i5=POINT(xi[4],yi[4],zi[4])
     
     # Puntos medios superiores
     xms=punto_x(angulo_msup,angulo_zeta3,r)
@@ -130,15 +122,7 @@ def Add_icosaedro():
 
     #dibuja puntos las 20 coordenadas del dodecaedro
     point1=doc.ModelSpace.AddPoint(Pslice_s1) 
-    #point2=doc.ModelSpace.AddPoint(Pslice_s2) 
-    #point3=doc.ModelSpace.AddPoint(Pslice_s3) 
-    #point4=doc.ModelSpace.AddPoint(Pslice_s4) 
-    #point5=doc.ModelSpace.AddPoint(Pslice_s5) 
-    point6=doc.ModelSpace.AddPoint(Pslice_i1) 
-    #point7=doc.ModelSpace.AddPoint(Pslice_i2) 
-    #point8=doc.ModelSpace.AddPoint(Pslice_i3) 
-    #point9=doc.ModelSpace.AddPoint(Pslice_i4) 
-    #point10=doc.ModelSpace.AddPoint(Pslice_i5)
+    point2=doc.ModelSpace.AddPoint(Pslice_i1) 
     point11=doc.ModelSpace.AddPoint(Pslice_ms1) 
     point12=doc.ModelSpace.AddPoint(Pslice_ms2) 
     point13=doc.ModelSpace.AddPoint(Pslice_ms3) 
@@ -150,18 +134,11 @@ def Add_icosaedro():
     point19=doc.ModelSpace.AddPoint(Pslice_mi4) 
     point20=doc.ModelSpace.AddPoint(Pslice_mi5)
 
+    #Nombrar los puntos
     height=0.1
     textString="P1"
     txt=doc.ModelSpace.Addtext("Ps1", Pslice_s1, height)
-    #txt=doc.ModelSpace.Addtext("Ps2", Pslice_s2, height)
-    #txt=doc.ModelSpace.Addtext("Ps3", Pslice_s3, height)
-    #txt=doc.ModelSpace.Addtext("Ps4", Pslice_s4, height)
-    #txt=doc.ModelSpace.Addtext("Ps5", Pslice_s5, height)
     txt=doc.ModelSpace.Addtext("Pi1", Pslice_i1, height)
-    #txt=doc.ModelSpace.Addtext("Pi2", Pslice_i2, height)
-    #txt=doc.ModelSpace.Addtext("Pi3", Pslice_i3, height)
-    #txt=doc.ModelSpace.Addtext("Pi4", Pslice_i4, height)
-    #txt=doc.ModelSpace.Addtext("Pi5", Pslice_i5, height)
     txt=doc.ModelSpace.Addtext("Pms1", Pslice_ms1, height)
     txt=doc.ModelSpace.Addtext("Pms2", Pslice_ms2, height)
     txt=doc.ModelSpace.Addtext("Pms3", Pslice_ms3, height)
@@ -173,50 +150,38 @@ def Add_icosaedro():
     txt=doc.ModelSpace.Addtext("Pmi4", Pslice_mi4, height)
     txt=doc.ModelSpace.Addtext("Pmi5", Pslice_mi5, height)
     
-
-
     #dibujar la esfera
     esfera=doc.ModelSpace.Addsphere(p1,r) #crea la esfera
     
     borrar=bool(False) # si se pone False borra uno de los solidos
 
-    #hay 12 planos de cortes
-    #corte pentagonos laterales superiores
+    #hay 20 planos de cortes
+    #corte triangulos superiores
     sliceObj1 = esfera.SliceSolid(Pslice_ms1,Pslice_ms2, Pslice_s1, borrar) #cortar el solido por un plano 3 puntos
     sliceObj2 = esfera.SliceSolid(Pslice_ms2,Pslice_ms3, Pslice_s1, borrar) #cortar el solido por un plano 3 puntos
     sliceObj3 = esfera.SliceSolid(Pslice_ms3,Pslice_ms4, Pslice_s1, borrar) #cortar el solido por un plano 3 puntos
     sliceObj4 = esfera.SliceSolid(Pslice_ms4,Pslice_ms5, Pslice_s1, borrar) #cortar el solido por un plano 3 puntos
     sliceObj5 = esfera.SliceSolid(Pslice_ms5,Pslice_ms1, Pslice_s1, borrar) #cortar el solido por un plano 3 puntos
-    #corte pentagono superior
-    #sliceObj6 = esfera.SliceSolid(Pslice_s2,Pslice_s3, Pslice_s1, borrar) #cortar el solido por un plano 3 puntos
+    
+    #corte triangulos inferiores
+    sliceObj6 = esfera.SliceSolid(Pslice_i1,Pslice_mi2, Pslice_mi1, borrar) #cortar el solido por un plano 3 puntos
+    sliceObj7 = esfera.SliceSolid(Pslice_i1,Pslice_mi3, Pslice_mi2, borrar) #cortar el solido por un plano 3 puntos
+    sliceObj8 = esfera.SliceSolid(Pslice_i1,Pslice_mi4, Pslice_mi3, borrar) #cortar el solido por un plano 3 puntos
+    sliceObj9 = esfera.SliceSolid(Pslice_i1,Pslice_mi5, Pslice_mi4, borrar) #cortar el solido por un plano 3 puntos
+    sliceObj10 = esfera.SliceSolid(Pslice_i1,Pslice_mi1, Pslice_mi5, borrar) #cortar el solido por un plano 3 puntos
 
-    sliceObj5 = esfera.SliceSolid(Pslice_i1,Pslice_mi2, Pslice_mi1, borrar) #cortar el solido por un plano 3 puntos
-    sliceObj5 = esfera.SliceSolid(Pslice_i1,Pslice_mi3, Pslice_mi2, borrar) #cortar el solido por un plano 3 puntos
-    sliceObj5 = esfera.SliceSolid(Pslice_i1,Pslice_mi4, Pslice_mi3, borrar) #cortar el solido por un plano 3 puntos
-    sliceObj5 = esfera.SliceSolid(Pslice_i1,Pslice_mi5, Pslice_mi4, borrar) #cortar el solido por un plano 3 puntos
-    sliceObj5 = esfera.SliceSolid(Pslice_i1,Pslice_mi1, Pslice_mi5, borrar) #cortar el solido por un plano 3 puntos
+    #corte triangulos laterales 
+    sliceObj11 = esfera.SliceSolid(Pslice_mi1,Pslice_ms2, Pslice_ms1, borrar) #cortar el solido por un plano 3 puntos
+    sliceObj12 = esfera.SliceSolid(Pslice_mi2,Pslice_ms3, Pslice_ms2, borrar) #cortar el solido por un plano 3 puntos
+    sliceObj13 = esfera.SliceSolid(Pslice_mi3,Pslice_ms4, Pslice_ms3, borrar) #cortar el solido por un plano 3 puntos
+    sliceObj14 = esfera.SliceSolid(Pslice_mi4,Pslice_ms5, Pslice_ms4, borrar) #cortar el solido por un plano 3 puntos
+    sliceObj15 = esfera.SliceSolid(Pslice_mi5,Pslice_ms1, Pslice_ms5, borrar) #cortar el solido por un plano 3 puntos
+    sliceObj16 = esfera.SliceSolid(Pslice_ms1,Pslice_mi5, Pslice_mi1, borrar) #cortar el solido por un plano 3 puntos
+    sliceObj17 = esfera.SliceSolid(Pslice_ms2,Pslice_mi1, Pslice_mi2, borrar) #cortar el solido por un plano 3 puntos
+    sliceObj18 = esfera.SliceSolid(Pslice_ms3,Pslice_mi2, Pslice_mi3, borrar) #cortar el solido por un plano 3 puntos
+    sliceObj19 = esfera.SliceSolid(Pslice_ms4,Pslice_mi3, Pslice_mi4, borrar) #cortar el solido por un plano 3 puntos
+    sliceObj20 = esfera.SliceSolid(Pslice_ms5,Pslice_mi4, Pslice_mi5, borrar) #cortar el solido por un plano 3 puntos
 
-    sliceObj5 = esfera.SliceSolid(Pslice_mi1,Pslice_ms2, Pslice_ms1, borrar) #cortar el solido por un plano 3 puntos
-    sliceObj5 = esfera.SliceSolid(Pslice_mi2,Pslice_ms3, Pslice_ms2, borrar) #cortar el solido por un plano 3 puntos
-    sliceObj5 = esfera.SliceSolid(Pslice_mi3,Pslice_ms4, Pslice_ms3, borrar) #cortar el solido por un plano 3 puntos
-    sliceObj5 = esfera.SliceSolid(Pslice_mi4,Pslice_ms5, Pslice_ms4, borrar) #cortar el solido por un plano 3 puntos
-    sliceObj5 = esfera.SliceSolid(Pslice_mi5,Pslice_ms1, Pslice_ms5, borrar) #cortar el solido por un plano 3 puntos
-
-    sliceObj5 = esfera.SliceSolid(Pslice_ms1,Pslice_mi5, Pslice_mi1, borrar) #cortar el solido por un plano 3 puntos
-    sliceObj5 = esfera.SliceSolid(Pslice_ms2,Pslice_mi1, Pslice_mi2, borrar) #cortar el solido por un plano 3 puntos
-    sliceObj5 = esfera.SliceSolid(Pslice_ms3,Pslice_mi2, Pslice_mi3, borrar) #cortar el solido por un plano 3 puntos
-    sliceObj5 = esfera.SliceSolid(Pslice_ms4,Pslice_mi3, Pslice_mi4, borrar) #cortar el solido por un plano 3 puntos
-    sliceObj5 = esfera.SliceSolid(Pslice_ms5,Pslice_mi4, Pslice_mi5, borrar) #cortar el solido por un plano 3 puntos
-
-    """#corte pentagonos laterales inferiores
-    sliceObj7 = esfera.SliceSolid(Pslice_ms1,Pslice_i1, Pslice_i2, borrar) #cortar el solido por un plano 3 puntos
-    sliceObj8 = esfera.SliceSolid(Pslice_ms2,Pslice_i2, Pslice_i3, borrar) #cortar el solido por un plano 3 puntos
-    sliceObj9 = esfera.SliceSolid(Pslice_ms3,Pslice_i3, Pslice_i4, borrar) #cortar el solido por un plano 3 puntos
-    sliceObj10 = esfera.SliceSolid(Pslice_ms4,Pslice_i4, Pslice_i5, borrar) #cortar el solido por un plano 3 puntos
-    sliceObj11 = esfera.SliceSolid(Pslice_ms5,Pslice_i5, Pslice_i1, borrar) #cortar el solido por un plano 3 puntos
-    #corte pentagono superior
-    sliceObj12 = esfera.SliceSolid(Pslice_i1,Pslice_i3, Pslice_i2, borrar) #cortar el solido por un plano 3 puntos
-    """
 
 def main():
     Add_icosaedro() 

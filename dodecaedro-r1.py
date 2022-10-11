@@ -75,10 +75,12 @@ def Add_dodecaedro():
     angulo_msup = [270,342,54,126,198]  # Esta alineado con angulo_superior
     angulo_minf = [306,18,90,162,234]   # Esta alineado con angulo_inferior pero se suma 72º para los indices 234+72=306 
 
-    angulo_zeta1 = 52.62263187  #angulo superior que forma el circulo inscripto en el poliedro
-    angulo_zeta2 = -52.62263187 #angulo inferior que forma el circulo inscripto en el poliedro
-    angulo_zeta3 = 10.81231696  #angulo que forma el circulo inscripto en vertices del poliedro en los puntos medios superiores
-    angulo_zeta4 = -10.81231696 #angulo que forma el circulo inscripto en vertices del poliedro en los puntos medios inferiores
+
+    angulo_zeta1 = 52.62263185935031  #angulo superior que forma el circulo inscripto en el poliedro.
+    angulo_zeta2 = -52.62263185935031 #angulo inferior que forma el circulo inscripto en el poliedro.
+    angulo_zeta3 = 10.81231696357172  #angulo que forma el circulo inscripto en vertices en los puntos medios superiores.
+    angulo_zeta4 = -10.81231696357172 #angulo que forma el circulo inscripto en vertices en los puntos medios inferiores.
+    
     
     # Puntos superiores del pentagono
     xs=punto_x(angulo_sup,angulo_zeta1,r)
@@ -149,6 +151,29 @@ def Add_dodecaedro():
     point18=doc.ModelSpace.AddPoint(Pslice_mi3) 
     point19=doc.ModelSpace.AddPoint(Pslice_mi4) 
     point20=doc.ModelSpace.AddPoint(Pslice_mi5)
+
+#Nombrar los puntos
+    height=0.1
+    txt1=doc.ModelSpace.Addtext("Ps1", Pslice_s1, height)
+    txt2=doc.ModelSpace.Addtext("Ps2", Pslice_s2, height)
+    txt3=doc.ModelSpace.Addtext("Ps3", Pslice_s3, height)
+    txt4=doc.ModelSpace.Addtext("Ps4", Pslice_s4, height)
+    txt5=doc.ModelSpace.Addtext("Ps5", Pslice_s5, height)
+    txt6=doc.ModelSpace.Addtext("Pi1", Pslice_i1, height)
+    txt7=doc.ModelSpace.Addtext("Pi2", Pslice_i2, height)
+    txt8=doc.ModelSpace.Addtext("Pi3", Pslice_i3, height)
+    txt9=doc.ModelSpace.Addtext("Pi4", Pslice_i4, height)
+    txt10=doc.ModelSpace.Addtext("Pi5", Pslice_i5, height)
+    txt11=doc.ModelSpace.Addtext("Pms1", Pslice_ms1, height)
+    txt12=doc.ModelSpace.Addtext("Pms2", Pslice_ms2, height)
+    txt13=doc.ModelSpace.Addtext("Pms3", Pslice_ms3, height)
+    txt14=doc.ModelSpace.Addtext("Pms4", Pslice_ms4, height)
+    txt15=doc.ModelSpace.Addtext("Pms5", Pslice_ms5, height)
+    txt16=doc.ModelSpace.Addtext("Pmi1", Pslice_mi1, height)
+    txt17=doc.ModelSpace.Addtext("Pmi2", Pslice_mi2, height)
+    txt18=doc.ModelSpace.Addtext("Pmi3", Pslice_mi3, height)
+    txt19=doc.ModelSpace.Addtext("Pmi4", Pslice_mi4, height)
+    txt20=doc.ModelSpace.Addtext("Pmi5", Pslice_mi5, height)
 
     #dibujar la esfera
     esfera=doc.ModelSpace.Addsphere(p1,r) #crea la esfera
