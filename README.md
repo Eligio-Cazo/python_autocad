@@ -44,8 +44,13 @@ AddExtrudedSolid.py
 *****************************************************************************************************
 Ejemplo  como añadir una region y crear un sólido a partir de esa region
 
-
 *****************************************************************************************************
 Dodecaedro.py
 *****************************************************************************************************
-Dibuja un dodecaedros a partir de una esfera al que se le hacen cortes con planos que forman el polyedro
+Dibuja un dodecaedro a partir de una esfera al que se le hacen cortes con planos que forman el polyedro
+
+*****************************************************************************************************
+Icosaedro.py
+*****************************************************************************************************
+Dibuja un icosaedros a partir de una esfera al que se le hacen cortes con planos que forman el polyedro
+
