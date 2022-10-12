@@ -52,5 +52,5 @@ Dibuja un dodecaedro a partir de una esfera al que se le hacen cortes con planos
 *****************************************************************************************************
 Icosaedro.py
 *****************************************************************************************************
-Dibuja un icosaedros a partir de una esfera al que se le hacen cortes con planos que forman el polyedro
+Dibuja un icosaedro a partir de una esfera al que se le hacen cortes con planos que forman el polyedro
 
