@@ -39,18 +39,3 @@ El programa reconoce los textos en formato:
 Computa las armaduras e inserta un bloque cpn atributos para los diferentes tipos de armaduras.
 Finalmente puede computar la suma de todas la armaduras sumando cada tipo de bloque, leyendo los atributos de cada uno
 
-*****************************************************************************************************
-AddExtrudedSolid.py
-*****************************************************************************************************
-Ejemplo  como añadir una region y crear un sólido a partir de esa region
-
-*****************************************************************************************************
-Dodecaedro.py
-*****************************************************************************************************
-Dibuja un dodecaedro a partir de una esfera al que se le hacen cortes con planos que forman el polyedro
-
-*****************************************************************************************************
-Icosaedro.py
-*****************************************************************************************************
-Dibuja un icosaedro a partir de una esfera al que se le hacen cortes con planos que forman el polyedro
-
