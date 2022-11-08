@@ -6,7 +6,11 @@ python -m pip install pywin32
 computo_armaduras.py
 *****************************************************************************************************
 Este programa crea bloques con atributos para computar varillas
-se crean bloques llamados:
+
+Para ver como funciona: https://youtu.be/Wt0_t3sjCsw
+
+Para comenzar a usar la funcion de computo del programa se crean los bloques llamados:
+Si no los tenemos creados, dentro del codigo esta una función que crea los bloques con atributos de forma automatica.
 
 "4.2" para varillas de 4.2 mm
 
