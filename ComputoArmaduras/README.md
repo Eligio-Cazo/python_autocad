@@ -1,6 +1,7 @@
 # Computos de armaduras con python y autocad
 Proyectos para automatizacion de cad en Python
 requiere pywin32
+
 python -m pip install pywin32
 *****************************************************************************************************
 computo_armaduras.py
